@@ -15,6 +15,7 @@
 - 汉堡标签用span来做，:before和:after做成上下两条，事件绑定在span的包含块上，否则三条线的中间不能触发事件。伪类生成的白条还要通过top,bottom等移动，否则会发生重叠。
 - 下拉框的朝向箭头，不要用“ > ”这种符号做，这个符号形成的角太小。方法是用`<span>`标签，设成块后它的`border-right`和`border-bottom`做，再通过`transform:rotate(45deg)`调整角度，生成的角很好看，下拉框的收起，列出用`transition`过渡，不过就有`transform`和`transition`的兼容性问题。
 - 做一个搜索框旁边的下拉框：
+
 ![下拉框](https://raw.githubusercontent.com/MillionQW/Notepad-by-vue2.0/master/static/img/87447062.jpg)
 
 </br>
