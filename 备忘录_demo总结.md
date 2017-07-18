@@ -1,12 +1,12 @@
 这个Demo来自github的 @lin-xin [Vuex 模块化实现待办事项的状态管理](https://github.com/lin-xin/blog/issues/5)。
 
 利用vue + vuex + webpack实现的一个备忘录。支持
-	1）添加事件
-	2）将事件标记为已完成
-	3）取消事件，取消后可复原
-	4）事件可编辑
-	5）可按字检索事件
-	6）分组显示事件
+	1）添加事件</br>
+	2）将事件标记为已完成</br>
+	3）取消事件，取消后可复原</br>
+	4）事件可编辑</br>
+	5）可按字检索事件</br>
+	6）分组显示事件</br>
 页面是响应式的。现在梳理一下制作demo遇到的问题和总结。
 
 # HTML、CSS部分
@@ -15,16 +15,20 @@
 - 汉堡标签用span来做，:before和:after做成上下两条，事件绑定在span的包含块上，否则三条线的中间不能触发事件。伪类生成的白条还要通过top,bottom等移动，否则会发生重叠。
 - 下拉框的朝向箭头，不要用“ > ”这种符号做，这个符号形成的角太小。方法是用`<span>`标签，设成块后它的`border-right`和`border-bottom`做，再通过`transform:rotate(45deg)`调整角度，生成的角很好看，下拉框的收起，列出用`transition`过渡，不过就有`transform`和`transition`的兼容性问题。
 - 做一个搜索框旁边的下拉框：</br>
-![](https://github.com/MillionQW/Notepad-by-vue2.0/blob/master/static/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/360%E6%88%AA%E5%9B%BE-87447062.jpg?raw=true)</br>
-![](https://github.com/MillionQW/Notepad-by-vue2.0/blob/master/static/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20170716220038.png?raw=true)
+![下拉框](https://github.com/MillionQW/Notepad-by-vue2.0/blob/master/static/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/360%E6%88%AA%E5%9B%BE-87447062.jpg?raw=true)
+</br>
+![下拉框](https://github.com/MillionQW/Notepad-by-vue2.0/blob/master/static/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20170716220038.png?raw=true)
+
 </br>
 代码结构：</br>
-![](https://github.com/MillionQW/Notepad-by-vue2.0/blob/master/static/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20170716220542.png?raw=true)
+![代码结构](https://github.com/MillionQW/Notepad-by-vue2.0/blob/master/static/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20170716220542.png?raw=true)
+
 </br>
 select_value用来显示从下面的option里选出来的值，函数绑定在select_option上。一开始.select_body的`height`为0，点击.select_value的时候给.select_body一个类，重新给select_body一个height，再设置transition就可以实现过渡。</br>
 - absolute居中法：设置包含块`position:absolute`，`left`和`right`同时为0，然后里面的div再设置`margin: auto 0`，适合包含块的position是absolute的情况。</br>
 - 编辑框和按钮在同一水平线的做法：</br>
 ![](https://github.com/MillionQW/Notepad-by-vue2.0/blob/master/static/%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20170716221606.png?raw=true)
+
 </br>
 
 编辑框的宽度100%，然后给包含块的`padding-right`设置得足够大，按钮用`position:absolute`放在右padding上。
